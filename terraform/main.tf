@@ -28,8 +28,8 @@ module "ers_api" {
 
 resource "apigee_target_server" "dps-api" {
     count   = length(regexall("sandbox", var.apigee_environment)) > 0 ? 0 : 1
-    name    = "dps-submission-api"
-    host    = var.dps-submission-api-host
+    name    = "ers-api"
+    host    = "https://internal-dev.api.service.nhs.uk/hello-world"
     env     = var.apigee_environment
     enabled = true
     port    = 443
