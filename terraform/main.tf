@@ -17,28 +17,9 @@ module "ers_api" {
   name               = "ers-api"
   path               = "ers-api"
   apigee_environment = var.apigee_environment
-  proxy_type         = "live"
+  proxy_type         = length(regexall("sandbox", var.apigee_environment)) > 0 ? "sandbox" : "live"
   namespace          = var.namespace
-  make_api_product         = false
+  make_api_product   = false
   # api_product_display_name = "DPS Submission API"
   # api_product_description  = ""
-}
-
-
-
-resource "apigee_target_server" "dps-api" {
-    count   = length(regexall("sandbox", var.apigee_environment)) > 0 ? 0 : 1
-    name    = "ers-api"
-    host    = "api.int.dev.covid-19.forms.digital.nhs.uk"
-    env     = var.apigee_environment
-    enabled = true
-    port    = 443
-
-    ssl_info {
-      ssl_enabled              = true
-      client_auth_enabled      = false
-      ignore_validation_errors = false
-      ciphers                  = []
-      protocols                = []
-    }
 }
