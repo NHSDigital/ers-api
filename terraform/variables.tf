@@ -1,6 +1,7 @@
 variable "apigee_organization" {
   type = string
   description = "ID of the apigee org to deploy to."
+  
 }
 
 variable "apigee_environment" {
