@@ -29,7 +29,7 @@ module "ers_api" {
 resource "apigee_target_server" "dps-api" {
     count   = length(regexall("sandbox", var.apigee_environment)) > 0 ? 0 : 1
     name    = "ers-api"
-    host    = "https://internal-dev.api.service.nhs.uk/hello-world"
+    host    = "api.int.dev.covid-19.forms.digital.nhs.uk"
     env     = var.apigee_environment
     enabled = true
     port    = 443
