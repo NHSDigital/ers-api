@@ -17,9 +17,9 @@ module "ers_api" {
   name               = "ers-api"
   path               = "ers-api"
   apigee_environment = var.apigee_environment
-  proxy_type         = length(regexall("sandbox", var.apigee_environment)) > 0 ? "sandbox" : "live"
+  proxy_type         = "sandbox"
   namespace          = var.namespace
   make_api_product   = false
-  # api_product_display_name = "DPS Submission API"
+  # api_product_display_name = "ERS API"
   # api_product_description  = ""
 }
