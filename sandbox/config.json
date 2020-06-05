@@ -1,15 +1,15 @@
 {
-    "mockDirectory": "./mock",
+    "mockDirectory": "./mockendpoints",
     "quiet": false,
     "port": "9000",
     "latency": 50,
     "logRequestHeaders": false,
     "webServices": {
-        "STU3/ReferralRequest/1": {
+        "ReferralRequest/1": {
             "latency": 20,
             "verbs": ["get"],
             "responses": {
-                "get": {"httpStatus": 200, "mockFile": "Referral.json"}
+                "get": {"httpStatus": 200, "mockFile": "referral.json"}
             }
         }
     }
