@@ -20,6 +20,6 @@ module "ers_api" {
   proxy_type         = "sandbox"
   namespace          = var.namespace
   make_api_product   = false
-  # api_product_display_name = "ERS API"
-  # api_product_description  = ""
+  api_product_display_name = "ERS API"
+  api_product_description  = ""
 }
