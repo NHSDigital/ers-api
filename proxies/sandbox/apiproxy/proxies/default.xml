@@ -9,7 +9,7 @@
       </Response>
       <Condition>request.verb == "OPTIONS" AND request.header.origin != null AND request.header.Access-Control-Request-Method != null</Condition>
     </Flow>
-    <!-- <Flow name="Flow.OAuth">
+    <Flow name="Flow.OAuth">
     <Description/>
       <Request>
           <Step>
@@ -18,7 +18,7 @@
       </Request>
       <Response/>
       <Condition>(proxy.pathsuffix MatchesPath "/hello/user") and (request.verb = "GET")</Condition>
-    </Flow> -->
+    </Flow>
   </Flows>
   <PreFlow/>
   <HTTPProxyConnection>
