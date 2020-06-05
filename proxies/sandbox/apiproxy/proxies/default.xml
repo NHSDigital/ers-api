@@ -12,7 +12,7 @@
   </Flows>
   <PreFlow/>
   <HTTPProxyConnection>
-    <BasePath>/api.dev1.ers.ncrs.nhs.uk/ers-api/</BasePath>
+    <BasePath>/ers-api/</BasePath>
     <VirtualHost>secure</VirtualHost>
   </HTTPProxyConnection>
   <RouteRule name="NoRoute">
