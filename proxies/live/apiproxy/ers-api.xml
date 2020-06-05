@@ -1,4 +1,0 @@
-<APIProxy name="ERS-API">
-  <!-- This is the root of the application -->
-  <Description>Proxy covering the ERS-API endpoints</Description>
-</APIProxy>
