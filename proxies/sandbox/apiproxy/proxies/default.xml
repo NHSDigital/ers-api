@@ -1,0 +1,34 @@
+<ProxyEndpoint name="default">
+  <Flows>
+    <Flow name="OptionsPreFlight">
+      <Request/>
+      <Response>
+        <Step>
+          <Name>AssignMessage.AddCors</Name>
+        </Step>
+      </Response>
+      <Condition>request.verb == "OPTIONS" AND request.header.origin != null AND request.header.Access-Control-Request-Method != null</Condition>
+    </Flow>
+    <!-- <Flow name="Flow.OAuth">
+    <Description/>
+      <Request>
+          <Step>
+              <Name>Oauth-VerifyAccessToken</Name>
+          </Step>
+      </Request>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/ReferralRequest/*") and (request.verb = "GET")</Condition>
+    </Flow> -->
+  </Flows>
+  <PreFlow/>
+  <HTTPProxyConnection>
+    <BasePath>/ers-api/</BasePath>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="NoRoute">
+    <Condition>request.verb == "OPTIONS" AND request.header.origin != null AND request.header.Access-Control-Request-Method != null</Condition>
+  </RouteRule>
+  <RouteRule name="sandbox">
+    <TargetEndpoint>sandbox</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>
