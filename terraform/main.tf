@@ -19,7 +19,7 @@ module "ers_api" {
   apigee_environment = var.apigee_environment
   proxy_type         = "sandbox"
   namespace          = var.namespace
-  make_api_product   = false
+  make_api_product   = length(var.namespace) == 0
   api_product_display_name = "ERS API"
   api_product_description  = ""
 }
