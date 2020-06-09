@@ -4,7 +4,9 @@ dist/
 build/
 public/
 newman/
-
+.terraform
+.idea
+venv
 .#*
 
 __pycache__/
