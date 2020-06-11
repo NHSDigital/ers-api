@@ -45,7 +45,7 @@ generate-examples: publish clean
 
 update-examples: generate-examples
 	#TODO copy and standardise examples e.g.:
-	jq -rM . <build/examples/resources/Patient.json >specification/components/examples/Patient.json
+	jq -rM . <build/examples/resources/Greeting.json >specification/components/examples/Greeting.json
 	make publish
 
 check-licenses:

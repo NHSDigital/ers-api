@@ -41,7 +41,7 @@ def main(args):
         replacements = os.environ
 
     sys.stdout.write(replace(template, replacements))
-    sys.stdout.close()
+    sys.stdout.close()  
 
 
 if __name__ == "__main__":
