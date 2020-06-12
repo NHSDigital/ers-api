@@ -66,6 +66,9 @@ jobs:
       - bash: "make install"
         displayName: Install repo
 
+      - bash: "make sandbox &"
+        displayName: Start Sandbox Server
+
       - bash: "make check-licenses"
         displayName: Check licenses
 
