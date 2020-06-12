@@ -216,7 +216,12 @@
 							"pm.test(\"Returns status code 200 OK\", () => {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							""
+							"",
+							"pm.test(\"Returns correct mock response\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    const expectedGreeting = pm.environment.get(\"expected_response\");",
+							"    pm.expect(responseJson).to.eql(expectedGreeting);",
+							"});"
 						],
 						"type": "text/javascript"
 					}
