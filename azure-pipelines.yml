@@ -85,7 +85,7 @@ jobs:
         inputs:
             testResultsFormat: 'JUnit'
             testResultsFiles: 'newman/*.xml'
-        failTaskOnFailedTests: true
+            failTaskOnFailedTests: true
 
       - bash: "make release"
         displayName: Build Release Package
