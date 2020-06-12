@@ -15,9 +15,10 @@ Options:
   -f <path> --file=<path>   Template from file at path.
   -e --env                  Replace from environment variables instead of JSON argument.
 """
+import json
 import os
 import sys
-import json
+
 from docopt import docopt
 from jinja2 import Template
 
@@ -41,7 +42,7 @@ def main(args):
         replacements = os.environ
 
     sys.stdout.write(replace(template, replacements))
-    sys.stdout.close()  
+    sys.stdout.close()
 
 
 if __name__ == "__main__":
