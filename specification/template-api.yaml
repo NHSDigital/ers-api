@@ -8,14 +8,29 @@ info:
   title: Electronic Referral Api
   description: |
     ## Overview
-    Use this API for any actions regarding referrals.
+    Use this API for any actions regarding referrals. 
+
+    ## Technology
+    This API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#basic-rest-apis). And is available via the Internet, and over the [Health and Social Care Network (HSCN)](https://digital.nhs.uk/services/health-and-social-care-network).
+
+    ## Authorisation
+    This API showcases one authorised endpoint, [user-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#open-access-apis), [Application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis) and [User-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis).
+      * User-restricted requires OAuth 2.0 authorisation. This involves an OAuth 2.0 Access Token presented in the 'Authorization' header along with the request.
+
+    ## Environments and Testing
+    You can test this API using our internal-dev environment:
+      - `https://internal-dev.api.service.nhs.uk/ers-api`
+
+    For more details on sandbox testing, see [Sandbox Testing](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing), or to try out the sandbox using our "Try this API" feature.
+    Alternatively, you can try out the sandbox using our Postman collection:
+    [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/426d37cb9cfe17b8b96d)
 
     ## Endpoints
     To see details for specific endpoints, select from the list on the left hand side of the page:
     - `GET /ers-api`
-  contact:
-    name: API Management Support
-    email: api.management@nhs.net
+contact:
+  name: API Management Support
+  email: api.management@nhs.net
 
 servers:
   - url: 'https://internal-dev.api.service.nhs.uk/ers-api/'
@@ -25,7 +40,7 @@ paths:
 
   /ers-api/:
     get:
-      summary: Retrieve a referral request and return a status code of 200 and referral request upon succession.
+      summary: Retrieve a referral request and return a status code of 200 and referral upon succession.
       operationId: retrieveDataFromERS
       description: |
         Get a 200 response from an user restricted endpoint.
@@ -38,9 +53,35 @@ paths:
               schema:
                 type: object
                 properties:
-                  referralObject:
+                  referral:
                     type: object
-                    example: "{}"
+                    example: "{
+                      id: 000000098888,
+                      meta: {
+                          versionId: 8,
+                          profile: [
+                              https://fhir.nhs.uk/STU3/StructureDefinition/eRS-ReferralRequest-1
+                          ]
+                      },
+                      resourceType: ReferralRequest,
+                      extension: [
+                          {
+                              url: https://fhir.nhs.uk/STU3/StructureDefinition/Extension-eRS-Appointment-1,
+                              valueReference: {
+                                  reference: appointment
+                              }
+                          },
+                          {
+                              url: https://fhir.nhs.uk/STU3/StructureDefinition/Extension-eRS-ClinicalInfoFirstSubmitted-1,
+                              valueDateTime: 2020-03-31T11:02:27.685Z
+                          }
+                        }"
+        '401':
+          description: Missing or invalid OAuth 2.0 Access Token
+          content:
+            application/json:
+              example:
+                message: "Invalid access token"              
       tags:
         - ers
 components:
