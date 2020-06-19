@@ -12,12 +12,6 @@
       <Step>
         <Name>AssignMessage.AddCors</Name>
       </Step>
-      <Step>
-        <Name>ExtractVariables.SystemId</Name>
-      </Step>
-      <Step>
-        <Name>AssignMessage.AddSystemIdHeader</Name>
-      </Step>
     </Response>
   </PreFlow>
   <HostedTarget>

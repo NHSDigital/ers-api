@@ -1,8 +1,0 @@
-<AssignMessage continueOnError="false" enabled="true" name="AssignMessage.AddSystemIdHeader">
-  <Add>
-    <Headers>
-      <Header name="XAPI_ASID">{ers.systemId}</Header>
-    </Headers>
-  </Add>
-  <AssignTo createNew="false" transport="http" type="request"/>
-</AssignMessage>
