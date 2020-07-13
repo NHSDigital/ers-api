@@ -18,12 +18,12 @@ info:
     email: api.management@nhs.net
 
 servers:
-  - url: 'https://internal-dev.api.service.nhs.uk/ers-api/'
+  - url: 'https://internal-dev.api.service.nhs.uk/ers-api'
     description: Internal-Dev environment.
 
 paths:
 
-  /ers-api/:
+  /ers-api:
     get:
       summary: Retrieve a referral request and return a status code of 200 and referral request upon succession.
       operationId: retrieveDataFromERS
@@ -56,3 +56,6 @@ components:
   schemas:
     Greeting:
       $ref: components/schemas/Greeting.yaml
+
+tags:
+  - name: ers

@@ -66,17 +66,29 @@ jobs:
       - bash: "make install"
         displayName: Install repo
 
+      - bash: "make sandbox &"
+        displayName: Start Sandbox Server
+
       - bash: "make check-licenses"
         displayName: Check licenses
 
-#      - bash: "make lint"
-#        displayName: Lint
+      - bash: "make lint"
+        displayName: Lint
 
       - bash: "make publish"
         displayName: Compile Spec
 
       - bash: 'echo "##vso[task.setvariable variable=SPEC_VERSION]$(poetry run python scripts/calculate_version.py)"'
         displayName: Set SPEC_VERSION
+
+      - bash: "make test"
+        displayName: Run Tests
+
+      - task: PublishTestResults@2
+        inputs:
+            testResultsFormat: 'JUnit'
+            testResultsFiles: 'newman/*.xml'
+            failTaskOnFailedTests: true
 
       - bash: "make release"
         displayName: Build Release Package
